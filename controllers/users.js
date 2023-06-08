@@ -28,20 +28,31 @@ const register = async (req, res) => {
 
   if (!email || !password || !name) {
     return res
-      .send(400)
+      .status(400)
       .json({ message: 'Пожалуйста, заполните обязательные поля' });
   }
 
-  const registredUser = await prisma.user.findFirst({ where: { email } });
+  const registeredUser = await prisma.user.findFirst({
+    where: {
+      email,
+    },
+  });
 
-  if (registredUser) {
-    return res.status(400).json({ message: 'Пользователь уже есть в системе' });
+  if (registeredUser) {
+    return res
+      .status(400)
+      .json({ message: 'Пользователь, с таким email уже существует' });
   }
 
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  const hashedPassord = await bcrypt.hash(password, salt);
+
   const user = await prisma.user.create({
-    data: { email, name, password: hashedPassword },
+    data: {
+      email,
+      name,
+      password: hashedPassord,
+    },
   });
 
   const secret = process.env.JWT_SECRET;
@@ -53,8 +64,9 @@ const register = async (req, res) => {
       name,
       token: jwt.sign({ id: user.id }, secret, { expiresIn: '30d' }),
     });
-  } else
+  } else {
     return res.status(400).json({ message: 'не удалось создать пользователя' });
+  }
 };
 
 const current = async (req, res) => {
