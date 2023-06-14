@@ -1,10 +1,5 @@
 const { prisma } = require('../prisma/prisma-client');
 
-/**
- * @route GET /api/employees
- * @desc Получение всех сотрудников
- * @access Private
- */
 const all = async (req, res) => {
   try {
     const employees = await prisma.employee.findMany();
@@ -15,11 +10,6 @@ const all = async (req, res) => {
   }
 };
 
-/**
- * @route POST /api/employees/add
- * @desc Добавление сотрудника
- * @access Private
- */
 const add = async (req, res) => {
   try {
     const data = req.body;
@@ -42,11 +32,6 @@ const add = async (req, res) => {
   }
 };
 
-/**
- * @route POST /api/empoyees/remove/:id
- * @desc Удаление сотрудника
- * @access Private
- */
 const remove = async (req, res) => {
   const { id } = req.body;
 
@@ -63,11 +48,6 @@ const remove = async (req, res) => {
   }
 };
 
-/**
- * @route PUT /api/empoyees/edit/:id
- * @desc Редактирование сотрудника
- * @access Private
- */
 const edit = async (req, res) => {
   const data = req.body;
   const id = data.id;
@@ -86,13 +66,8 @@ const edit = async (req, res) => {
   }
 };
 
-/**
- * @route GET /api/employees/:id
- * @desc Получение сотрудника
- * @access Private
- */
 const employee = async (req, res) => {
-  const { id } = req.params; // http://localhost:8000/api/employees/9fe371c1-361f-494a-9def-465959ecc098
+  const { id } = req.params;
 
   try {
     const employee = await prisma.employee.findUnique({
