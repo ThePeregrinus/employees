@@ -3,12 +3,18 @@ import { Button, Form } from 'antd';
 type Props = {
   children: React.ReactNode;
   htmlType?: 'button' | 'submit' | 'reset' | undefined;
-  type?: 'link' | 'text' | 'default' | 'primary' | 'dashed' | undefined;
+  type?:
+    | 'link'
+    | 'text'
+    | 'default'
+    | 'primary'
+    | 'dashed'
+    | 'ghost'
+    | undefined;
   danger?: boolean;
   loading?: boolean;
   shape?: 'default' | 'circle' | 'round' | undefined;
   icon?: React.ReactNode;
-  ghost?: boolean;
   onClick?: () => void;
 };
 
@@ -20,7 +26,6 @@ export const CustomButton = ({
   loading,
   shape,
   icon,
-  ghost,
   onClick,
 }: Props) => {
   return (
@@ -32,7 +37,6 @@ export const CustomButton = ({
         loading={loading}
         shape={shape}
         icon={icon}
-        ghost={ghost}
       >
         {children}
       </Button>

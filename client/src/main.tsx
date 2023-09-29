@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import './index.css';
+import { ConfigProvider, theme } from 'antd';
 
 import { store } from './app/store';
 import { Paths } from './paths';
 import { Login } from './pages/login';
 import { Register } from './pages/register';
+import './index.css';
 
 const router = createBrowserRouter([
   { path: Paths.home, element: <h1>Home</h1> },
@@ -18,7 +19,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </Provider>
   </React.StrictMode>
 );

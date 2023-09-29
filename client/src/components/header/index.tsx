@@ -1,9 +1,10 @@
 import { Layout, Space, Typography } from 'antd';
-import { TeamOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { LoginOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 
 import { CustomButton } from '../custom_button';
 import { Paths } from '../../paths';
+
 import styles from './index.module.css';
 
 export const Header = () => {
@@ -12,8 +13,20 @@ export const Header = () => {
       <Space>
         <TeamOutlined className={styles.teamIcons} />
         <Link to={Paths.home}>
-          <CustomButton type="link">
+          <CustomButton type="ghost">
             <Typography.Title level={1}>Сотрудники</Typography.Title>
+          </CustomButton>
+        </Link>
+      </Space>
+      <Space>
+        <Link to={Paths.register}>
+          <CustomButton type="ghost" icon={<UserOutlined />}>
+            Зарегестрироваться
+          </CustomButton>
+        </Link>
+        <Link to={Paths.login}>
+          <CustomButton type="ghost" icon={<LoginOutlined />}>
+            Войти
           </CustomButton>
         </Link>
       </Space>
