@@ -1,8 +1,8 @@
 import { Input, Form } from 'antd';
 
 type Props = {
-  name?: string;
-  placeholder?: string;
+  name: string;
+  placeholder: string;
   type?: string;
 };
 
