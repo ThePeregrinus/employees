@@ -15,7 +15,7 @@ export const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
       dependencies={dependencies}
       hasFeedback={true}
       rules={[
-        { required: true, message: 'обязательное поле' },
+        { required: true, message: 'Обязательное поле' },
         ({ getFieldValue }) => ({
           validator(_, value) {
             if (!value) {

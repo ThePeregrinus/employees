@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <Layout.Header className={styles.header}>
       <Space>
-        <TeamOutlined className={styles.teamIcons} />
+        <TeamOutlined className={styles.teamIcon} />
         <Link to={Paths.home}>
           <CustomButton type="ghost">
             <Typography.Title level={1}>Сотрудники</Typography.Title>

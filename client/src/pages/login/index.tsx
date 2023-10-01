@@ -11,11 +11,10 @@ export const Login = () => {
   return (
     <Layout>
       <Row align="top" justify="center">
-        <Card title="Войдите" style={{ width: '30rem' }}>
+        <Card title="Вход" style={{ width: '30rem' }}>
           <Form onFinish={() => null}>
-            <CustomInput name="email" placeholder="email" type="email" />
-            <PasswordInput name="password" placeholder="пароль" />
-
+            <CustomInput name="email" placeholder="Email" type="email" />
+            <PasswordInput name="password" placeholder="Пароль" />
             <CustomButton type="primary" htmlType="submit">
               Войти
             </CustomButton>
