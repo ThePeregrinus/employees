@@ -22,7 +22,7 @@ export const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
               return Promise.resolve();
             }
             if (name === 'confirmPassword') {
-              if (value || getFieldValue('password') === value) {
+              if (!value || getFieldValue('password') === value) {
                 return Promise.resolve();
               }
               return Promise.reject(new Error('Пароли должны совпадать'));
@@ -32,7 +32,7 @@ export const PasswordInput = ({ name, placeholder, dependencies }: Props) => {
                   new Error('Пароль должен иметь больше шести символов')
                 );
               }
-              Promise.resolve();
+              return Promise.resolve();
             }
           },
         }),
